@@ -5,7 +5,7 @@ import { Button } from "../Button/Button";
 
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,8 @@ export const ContactForm = () => {
   const idNumber = useId();
 
   const handleSubmit = (initialValues, actions) => {
-    dispatch(addContact(initialValues.name, initialValues.number));
+    const { name, number } = initialValues;
+    dispatch(addContact({ name, number }));
     actions.resetForm();
   };
 
