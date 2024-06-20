@@ -1,0 +1,9 @@
+.button {
+  background-color: rgb(1, 84, 238);
+  text-align: center;
+}
+
+.button:hover {
+  background-color: rgb(7, 74, 199);
+  scale: 1.03;
+}
