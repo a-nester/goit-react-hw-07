@@ -1,14 +1,13 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./contactsOps";
 
-// навмисно задав початковий стан не пустий
 const contactsInitialState = {
   items: [],
   isLoading: false,
   error: null,
 };
 
-const handlePending = (state, action) => {
+const handlePending = (state) => {
   state.isLoading = true;
 };
 const handleRejected = (state, action) => {
@@ -44,32 +43,6 @@ const contactsSlice = createSlice({
       })
       .addCase(deleteContact.rejected, handleRejected);
   },
-
-  // reducers: {
-  //   addContact: {
-  //     reducer(state, action) {
-  //       state.items.push(action.payload);
-  //     },
-  //     prepare(name, number) {
-  //       return {
-  //         payload: {
-  //           id: nanoid(),
-  //           name,
-  //           number,
-  //         },
-  //       };
-  //     },
-  //   },
-
-  //   deleteContact(state, action) {
-  //     const index = state.items.findIndex((task) => {
-  //       return task.id === action.payload;
-  //     });
-
-  //     state.items.splice(index, 1);
-  //   },
-  // },
 });
 
-// export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
