@@ -38,8 +38,11 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.items.indexOf((item) => item.id === action.payload);
-        state.items.splice(index, 1);
+        state.items.filter((el) => el.id !== action.payload.id);
+        // const index = state.items.indexOf(
+        //   (item) => item.id === action.payload.id
+        // );
+        // state.items.splice(index, 1);
       })
       .addCase(deleteContact.rejected, handleRejected);
   },
