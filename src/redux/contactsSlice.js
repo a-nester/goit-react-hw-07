@@ -39,10 +39,6 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = state.items.filter((el) => el.id !== action.payload.id);
-        // const index = state.items.indexOf(
-        //   (item) => item.id === action.payload.id
-        // );
-        // state.items.splice(index, 1);
       })
       .addCase(deleteContact.rejected, handleRejected);
   },
